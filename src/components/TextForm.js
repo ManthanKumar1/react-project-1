@@ -17,6 +17,17 @@ export default function TextForm(props) {
         setText(newText)
     }
 
+    const handleCopy = () => {
+        let newText = document.getElementById('Text')
+        newText.select()
+        navigator.clipboard.writeText(newText.value)
+    }
+
+    const handleExtraSpaces = () => {
+        let newText = text.split(/[ ]+/)
+        setText(newText.join(" "))
+    }
+
     const handleOnChange = (event) => {
         setText(event.target.value)
     }
@@ -33,6 +44,8 @@ export default function TextForm(props) {
                 <button className="btn btn-primary mx-2" onClick={handleUpClick}>Covert to upper case</button>
                 <button className="btn btn-primary mx-2" onClick={handleLowClick}>Covert to lower case</button>
                 <button className="btn btn-primary mx-2" onClick={handleClearText}>Clear Text</button>
+                <button className="btn btn-primary mx-2" onClick={handleCopy}>Copy Text</button>
+                <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
             </div>
             <div className="container my-3">
                 <h2>Your text summary</h2>
